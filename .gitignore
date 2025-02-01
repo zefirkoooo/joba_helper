@@ -3,4 +3,6 @@ __pycache__/
 config.py
 .env
 venv/
-.idea/
+.idea/config.py
+config.py
+config.py
