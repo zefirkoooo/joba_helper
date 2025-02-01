@@ -4,13 +4,7 @@ from PyQt6.QtWidgets import QMessageBox
 CONFIG_FILE = "config.py"
 
 def save_api_key(api_key, should_save, parent_window):
-    """
-    Сохраняет API ключ в config.py.
-
-    :param api_key: Введенный API-ключ (str)
-    :param should_save: Флаг сохранения (bool)
-    :param parent_window: Окно, в котором вызывается функция (для отображения сообщений)
-    """
+    """Сохраняет API ключ в config.py."""
     api_key = api_key.strip()
 
     if not api_key:
