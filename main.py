@@ -6,3 +6,4 @@ app = QApplication(sys.argv)
 window = SimpleApp()
 window.show()
 sys.exit(app.exec())
+

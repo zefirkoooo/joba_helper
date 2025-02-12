@@ -1,8 +1,10 @@
 import os
 from PyQt6.QtWidgets import (
     QWidget, QPushButton, QVBoxLayout, QLabel,
-    QComboBox, QLineEdit, QCheckBox, QProgressBar, QTimer
+    QComboBox, QLineEdit, QCheckBox, QProgressBar
 )
+
+from PyQt6.QtCore import QTimer
 from GUI.func_gui import save_api_key
 from voice_questions.voice_func import capture_audio_from_output, list_output_devices, get_audio_level
 
@@ -20,7 +22,7 @@ class SimpleApp(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Приложение с выбором устройства и API-ключом")
+        self.setWindowTitle("Ваш личный Helper с собеседованием :)")
         self.setGeometry(100, 100, 400, 450)
 
         self.label = QLabel("Выберите устройство вывода звука", self)
@@ -68,9 +70,15 @@ class SimpleApp(QWidget):
 
         self.setLayout(layout)
 
+    # def populate_audio_devices(self):
+    #     """Заполняет список аудиоустройств вывода"""
+    #     self.device_combo.addItems(list_output_devices().values())
+
     def populate_audio_devices(self):
-        """Заполняет список аудиоустройств вывода"""
-        self.device_combo.addItems(list_output_devices().values())
+        """Заполняет список аудиоустройств вывода с поддержкой WASAPI и loopback"""
+        self.device_combo.clear()
+        devices = list_output_devices()
+        self.device_combo.addItems(devices.values())
 
     def show_api_key_input(self):
         """Показывает поле для ввода API ключа"""
